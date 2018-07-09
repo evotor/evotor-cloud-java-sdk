@@ -27,6 +27,7 @@ public class Document {
     private String deviceImei;
     private String storeId;
     private String userId;
+    private String version;
 
     @JsonTypeInfo(
             use = JsonTypeInfo.Id.NAME,

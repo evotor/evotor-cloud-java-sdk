@@ -9,6 +9,7 @@ import io.evotor.market.api.v2.model.document.DocumentType;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
 
 class DocumentBuilder implements Documents, Documents.StoreDocumentTypesBuilder, Documents.StoreDocumentUntilBuilder, Documents.DocumentFinalStage {
@@ -70,5 +71,10 @@ class DocumentBuilder implements Documents, Documents.StoreDocumentTypesBuilder,
     public StoreDocumentUntilBuilder since(long since) {
         this.since = since;
         return this;
+    }
+
+    @Override
+    public DocumentInstance select(UUID document) {
+        return () -> api.getSingleDocument(store, document.toString());
     }
 }

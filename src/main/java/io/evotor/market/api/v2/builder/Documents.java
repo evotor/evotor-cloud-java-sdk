@@ -7,10 +7,12 @@ import io.evotor.market.api.v2.model.document.DocumentType;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
+import java.util.UUID;
 
 public interface Documents {
 
     StoreDocumentUntilBuilder since(long since);
+    DocumentInstance select(UUID document);
 
     default StoreDocumentUntilBuilder all() {
         return since(0);
@@ -45,5 +47,9 @@ public interface Documents {
 
     interface DocumentFinalStage extends Iterable<Document> {
         Page<Document> fetch();
+    }
+
+    interface DocumentInstance {
+        Document fetch();
     }
 }

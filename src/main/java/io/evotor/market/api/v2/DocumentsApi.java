@@ -32,4 +32,16 @@ public interface DocumentsApi {
                                         @Param("device_id") String device,
                                         @Param("cursor") String cursor);
 
+    @RequestLine("GET /stores/{store_id}/documents/{document_id}")
+    Document getSingleDocument(
+            @Param("store_id") String store,
+            @Param("document_id") String documentId
+    );
+
+    @RequestLine("GET /stores/{store_id}/devices/{device_id}/documents/{document_id}")
+    Document getSingleDocument(
+            @Param("store_id") String store,
+            @Param("device_id") String device,
+            @Param("document_id") String documentId
+    );
 }
