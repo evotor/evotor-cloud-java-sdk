@@ -1,11 +1,14 @@
 package io.evotor.market.api.v2.model.employee;
 
+import io.evotor.market.api.v2.model.AbstractResource;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Collection;
 
 @Data
-public class Employee {
+@EqualsAndHashCode(callSuper = true)
+public class Employee extends AbstractResource {
 
     private String id;
     private String name;
