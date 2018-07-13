@@ -1,13 +1,16 @@
 package io.evotor.market.api.v2.model.supplier;
 
+import io.evotor.market.api.v2.model.AbstractResource;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Data
-public class Supplier {
+@EqualsAndHashCode(callSuper = true)
+public class Supplier extends AbstractResource {
 
     @NotNull
     private UUID id;

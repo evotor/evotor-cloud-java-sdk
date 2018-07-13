@@ -1,6 +1,7 @@
 package io.evotor.market.api.v2.model.document;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import io.evotor.market.api.v2.model.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Document {
+public class Document implements Resource {
 
     private String type;
     private UUID id;
@@ -37,4 +38,13 @@ public class Document {
     )
     private DocumentBody body;
 
+    @Override
+    public Date getCreatedAt() {
+        return closeDate;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return closeDate;
+    }
 }

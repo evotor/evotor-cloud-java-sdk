@@ -2,8 +2,10 @@ package io.evotor.market.api.v2.model.product;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import io.evotor.market.api.v2.model.AbstractResource;
 import io.evotor.market.api.v2.model.product.image.ProductImage;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,7 +25,8 @@ import java.util.UUID;
         @JsonSubTypes.Type(value = MarkedAlcoholProduct.class, name = "ALCOHOL_MARKED"),
         @JsonSubTypes.Type(value = AlcoholProduct.class, name = "ALCOHOL_NOT_MARKED")
 })
-public abstract class AnyProduct {
+@EqualsAndHashCode(callSuper = true)
+public abstract class AnyProduct extends AbstractResource {
 
     @NotNull
     private UUID id;
