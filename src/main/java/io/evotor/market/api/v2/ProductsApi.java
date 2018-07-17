@@ -35,15 +35,17 @@ public interface ProductsApi {
                       ProductUpdateFields fields);
 
     @Scope(value = "product:write", optional = "product.quantity:write")
-    @RequestLine("POST /stores/{store_id}")
+    @RequestLine("POST /stores/{store_id}/products")
     AnyProduct create(@Param("store_id") String storeId,
                       AnyProduct product);
 
+    @Deprecated
     @Scope(value = "product:write", optional = "product.quantity:write")
     @RequestLine("POST /stores/{store_id}/product-bulks")
     ProductBulkTask createBulk(@Param("store_id") String storeId,
                                Collection<AnyProduct> products);
 
+    @Deprecated
     @Scope("product:read")
     @RequestLine("GET /stores/{store_id}/product-bulks/{task_id}")
     ProductBulkTask bulkStatus(@Param("store_id") String storeId,
