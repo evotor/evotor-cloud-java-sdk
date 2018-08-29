@@ -2,6 +2,7 @@ package io.evotor.market.api.v2;
 
 import feign.Param;
 import feign.RequestLine;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.store.Store;
 
@@ -12,6 +13,6 @@ public interface StoresApi {
     Page<Store> fetch();
 
     @RequestLine("GET /stores/{store_id}")
-    Store fetchOne(@Param("store_id") String store);
+    Store fetchOne(@Param("store_id") GUID store);
 
 }

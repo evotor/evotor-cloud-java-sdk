@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.UUID;
 
@@ -18,6 +19,9 @@ public class Supplier extends AbstractResource {
     @NotNull
     @Size(min = 1, max = 255)
     private String name;
+
+    @Null
+    private String userId;
 
     public static Builder builder() {
         return new Builder();

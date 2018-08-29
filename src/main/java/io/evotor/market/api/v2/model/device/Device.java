@@ -1,6 +1,7 @@
 package io.evotor.market.api.v2.model.device;
 
 import io.evotor.market.api.v2.model.AbstractResource;
+import io.evotor.market.api.v2.model.GUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,12 +9,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class Device extends AbstractResource {
 
-    private String id;
+    private GUID id;
     private String code;
     private String name;
-    private String storeId;
     private Long timezoneOffset;
     private String imei;
     private String firmware;
+    private String userId;
+    private GUID storeId;
 
 }

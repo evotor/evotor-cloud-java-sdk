@@ -2,6 +2,7 @@ package io.evotor.market.api.v2.impl;
 
 import io.evotor.market.api.v2.EmployeesApi;
 import io.evotor.market.api.v2.builder.Employees;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.employee.Employee;
 
@@ -9,9 +10,9 @@ import java.util.function.Function;
 
 class EmployeeImpl extends Impl implements Employees {
 
-    private final String store;
+    private final GUID store;
 
-    EmployeeImpl(Function<Class, Object> apiProvider, String store) {
+    EmployeeImpl(Function<Class, Object> apiProvider, GUID store) {
         super(apiProvider);
         this.store = store;
     }

@@ -1,6 +1,7 @@
 package io.evotor.market.api.v2.model.document;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,9 +25,9 @@ public class Document implements Resource {
     private UUID sessionId;
     private int sessionNumber;
     private String closeUserId;
-    private String deviceId;
-    private String deviceImei;
-    private String storeId;
+    private GUID deviceId;
+    private GUID deviceImei;
+    private GUID storeId;
     private String userId;
     private String version;
 

@@ -1,11 +1,12 @@
 package io.evotor.market.api.v2.builder;
 
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.store.Store;
 
 public interface Stores {
 
-    StoreInstance select(String store);
+    StoreInstance select(GUID store);
 
     Page<Store> fetch();
 

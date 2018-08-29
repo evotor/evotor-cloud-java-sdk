@@ -1,6 +1,7 @@
 package io.evotor.market.api.v2;
 
 import io.evotor.market.api.v2.model.BulkTask;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
 import io.evotor.market.api.v2.model.product.PhysicalProduct;
@@ -11,12 +12,15 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.UUID;
 
 import static io.evotor.market.api.v2.ApiHolder.STORE;
 import static io.evotor.market.api.v2.ApiHolder.api;
 import static org.junit.Assert.*;
 
 public class ProductsTests {
+
+    private static final GUID STORE_2 = new GUID(new UUID(0L, 2L));
 
     @Test
     public void list_products() {
@@ -32,7 +36,7 @@ public class ProductsTests {
     @Test
     public void list_products_from_second_store() {
         Page<AnyProduct> page = api.stores()
-                .select("store_2")
+                .select(STORE_2)
                 .products()
                 .fetch();
 
@@ -54,7 +58,7 @@ public class ProductsTests {
                 .build();
 
         BulkTask<AnyProduct> task = ApiHolder.api.stores()
-                .select("store_2")
+                .select(STORE_2)
                 .products()
                 .create(Collections.singletonList(actualProduct))
                 .get();

@@ -2,6 +2,7 @@ package io.evotor.market.api.v2.impl;
 
 import io.evotor.market.api.v2.DocumentsApi;
 import io.evotor.market.api.v2.builder.Documents;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.document.Document;
 import io.evotor.market.api.v2.model.document.DocumentType;
@@ -15,19 +16,19 @@ import java.util.function.Function;
 class DocumentBuilder implements Documents, Documents.StoreDocumentTypesBuilder, Documents.StoreDocumentUntilBuilder, Documents.DocumentFinalStage {
 
     private final DocumentsApi api;
-    private String store;
-    private String device;
+    private GUID store;
+    private GUID device;
     private Long since = 0L;
     private Long until;
     private Set<String> types;
 
-    DocumentBuilder(DocumentsApi api, String store, String device) {
+    DocumentBuilder(DocumentsApi api, GUID store, GUID device) {
         this.api = api;
         this.store = store;
         this.device = device;
     }
 
-    static DocumentBuilder withStore(DocumentsApi api, String store) {
+    static DocumentBuilder withStore(DocumentsApi api, GUID store) {
         return new DocumentBuilder(api, store, null);
     }
 

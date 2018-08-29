@@ -2,6 +2,7 @@ package io.evotor.market.api.v2;
 
 import feign.Param;
 import feign.RequestLine;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.device.Device;
 
@@ -9,9 +10,9 @@ import io.evotor.market.api.v2.model.device.Device;
 public interface DevicesApi {
 
     @RequestLine("GET /devices?store_id={store_id}")
-    Page<Device> fetch(@Param("store_id") String store);
+    Page<Device> fetch(@Param("store_id") GUID store);
 
     @RequestLine("GET /devices/{device_id}")
-    Device fetchOne(@Param("device_id") String device);
+    Device fetchOne(@Param("device_id") GUID device);
 
 }

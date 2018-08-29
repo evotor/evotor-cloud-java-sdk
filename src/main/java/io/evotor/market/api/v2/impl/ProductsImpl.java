@@ -4,6 +4,7 @@ import io.evotor.market.api.v2.ProductImagesApi;
 import io.evotor.market.api.v2.ProductsApi;
 import io.evotor.market.api.v2.builder.Products;
 import io.evotor.market.api.v2.model.BulkTask;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
 import io.evotor.market.api.v2.model.product.ProductUpdateFields;
@@ -18,9 +19,9 @@ import java.util.function.Function;
 
 public class ProductsImpl extends Impl implements Products {
 
-    private final String store;
+    private final GUID store;
 
-    ProductsImpl(Function<Class, Object> apiProvider, String store) {
+    ProductsImpl(Function<Class, Object> apiProvider, GUID store) {
         super(apiProvider);
         this.store = store;
     }

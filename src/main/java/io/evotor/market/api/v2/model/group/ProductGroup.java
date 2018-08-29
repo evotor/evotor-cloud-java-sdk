@@ -1,6 +1,7 @@
 package io.evotor.market.api.v2.model.group;
 
 import io.evotor.market.api.v2.model.AbstractResource;
+import io.evotor.market.api.v2.model.GUID;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,6 +25,9 @@ public class ProductGroup extends AbstractResource {
     private List<Attribute> attributes;
 
     private List<@NotBlank String> barcodes;
+
+    private GUID storeId;
+    private String userId;
 
     public static Builder builder() {
         return new Builder();

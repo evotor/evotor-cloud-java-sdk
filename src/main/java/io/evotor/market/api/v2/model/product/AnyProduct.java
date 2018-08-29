@@ -3,12 +3,14 @@ package io.evotor.market.api.v2.model.product;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.evotor.market.api.v2.model.AbstractResource;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.product.image.ProductImage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.UUID;
@@ -37,6 +39,12 @@ public abstract class AnyProduct extends AbstractResource {
     private UUID parentId;
 
     private List<ProductImage> images;
+
+    @Null
+    private GUID storeId;
+
+    @Null
+    private String userId;
 
     public static class Builder<T extends AnyProduct, B extends AnyProduct.Builder<T, ?>> {
 

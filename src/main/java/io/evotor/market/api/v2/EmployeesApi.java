@@ -2,6 +2,7 @@ package io.evotor.market.api.v2;
 
 import feign.Param;
 import feign.RequestLine;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.employee.Employee;
 
@@ -9,7 +10,7 @@ import io.evotor.market.api.v2.model.employee.Employee;
 public interface EmployeesApi {
 
     @RequestLine("GET /employees?store_id={store_id}")
-    Page<Employee> fetch(@Param("store_id") String store);
+    Page<Employee> fetch(@Param("store_id") GUID store);
 
     @RequestLine("GET /employees/{employee_id}")
     Employee fetchOne(@Param("employee_id") String employee);

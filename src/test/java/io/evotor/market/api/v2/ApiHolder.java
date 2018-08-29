@@ -11,6 +11,7 @@ import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
 import io.evotor.market.api.exception.ExceptionResolver;
 import io.evotor.market.api.v2.builder.Api;
+import io.evotor.market.api.v2.model.GUID;
 import net.javacrumbs.jsonunit.JsonMatchers;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
@@ -28,8 +29,8 @@ import java.util.*;
 
 public class ApiHolder {
 
-    public static final String STORE = "store_1";
-    public static final UUID DEFAULT = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    public static final GUID STORE = new GUID(new UUID(0L, 1L));
+    public static final UUID DEFAULT = new UUID(0L, 1L);
 
     public static Api api = new ApiV2(Feign.builder()
             .encoder(new ValidationEncoder())
@@ -58,8 +59,9 @@ public class ApiHolder {
 
             int index = path.lastIndexOf("/");
             String prefix = path.substring(0, index) + "/" + request.method() + " " + path.substring(index + 1);
+            String updated = StringUtils.removeAll(prefix, "00000000-0000-0000-0000-00000000000");
 
-            InputStream inputStream = ApiHolder.class.getResourceAsStream(prefix + ".in.json");
+            InputStream inputStream = ApiHolder.class.getResourceAsStream(updated + ".in.json");
             if (inputStream != null) {
                 JsonNode expected = mapper.readTree(inputStream);
                 JsonNode actual = mapper.readTree(request.body());
@@ -67,7 +69,7 @@ public class ApiHolder {
                 Assert.assertThat(expected, JsonMatchers.jsonEquals(actual));
             }
 
-            InputStream outputStream = ApiHolder.class.getResourceAsStream(prefix + ".json");
+            InputStream outputStream = ApiHolder.class.getResourceAsStream(updated + ".json");
             if (outputStream == null) {
                 return Response.builder()
                         .status(404)

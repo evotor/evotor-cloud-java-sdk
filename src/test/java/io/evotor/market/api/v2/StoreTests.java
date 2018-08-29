@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.Collection;
 
+import static io.evotor.market.api.v2.ApiHolder.STORE;
 import static org.junit.Assert.*;
 
 public class StoreTests {
@@ -31,7 +32,7 @@ public class StoreTests {
     @Test
     public void view_store() {
         Store store = ApiHolder.api.stores()
-                .select("store_1")
+                .select(STORE)
                 .fetch();
 
         assertNotNull(store.getId());

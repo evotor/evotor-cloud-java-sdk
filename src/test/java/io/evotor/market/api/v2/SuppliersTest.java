@@ -27,8 +27,8 @@ public class SuppliersTest {
     @Test
     public void delete_batch() throws Exception {
         api.suppliers().delete(Arrays.asList(
-                UUID.fromString("00000000-0000-0000-0000-000000000000"),
-                UUID.fromString("00000000-0000-0000-0000-000000000001"))
+                UUID.fromString("00000000-0000-0000-0000-000000000001"),
+                UUID.fromString("00000000-0000-0000-0000-000000000002"))
         );
     }
 }

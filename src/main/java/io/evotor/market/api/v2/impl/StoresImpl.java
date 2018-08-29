@@ -3,6 +3,7 @@ package io.evotor.market.api.v2.impl;
 import io.evotor.market.api.v2.DocumentsApi;
 import io.evotor.market.api.v2.StoresApi;
 import io.evotor.market.api.v2.builder.*;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.store.Store;
 
@@ -15,7 +16,7 @@ class StoresImpl extends Impl implements Stores {
     }
 
     @Override
-    public StoreInstance select(String store) {
+    public StoreInstance select(GUID store) {
         return new StoreInstance() {
             @Override
             public Store fetch() {

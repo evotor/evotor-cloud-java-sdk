@@ -3,6 +3,7 @@ package io.evotor.market.api.v2.impl;
 import io.evotor.market.api.v2.ProductGroupsApi;
 import io.evotor.market.api.v2.builder.ProductGroups;
 import io.evotor.market.api.v2.model.BulkTask;
+import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.group.ProductGroup;
 import io.evotor.market.api.v2.model.group.ProductGroupUpdateFields;
@@ -15,9 +16,9 @@ import java.util.function.Function;
 
 class ProductGroupsImpl extends Impl implements ProductGroups {
 
-    private final String store;
+    private final GUID store;
 
-    ProductGroupsImpl(Function<Class, Object> apiProvider, String store) {
+    ProductGroupsImpl(Function<Class, Object> apiProvider, GUID store) {
         super(apiProvider);
         this.store = store;
     }
