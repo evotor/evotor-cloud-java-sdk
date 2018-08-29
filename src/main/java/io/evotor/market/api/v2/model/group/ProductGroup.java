@@ -14,6 +14,8 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class ProductGroup extends AbstractResource {
 
+    private UUID id;
+
     private UUID parentId;
 
     @NotNull
