@@ -4,7 +4,7 @@ import io.evotor.market.api.v2.model.BulkTask;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
 import io.evotor.market.api.v2.model.product.ProductUpdateFields;
-import io.evotor.market.api.v2.model.product.image.ProductImageDesc;
+import io.evotor.market.api.v2.model.product.image.ProductImage;
 
 import java.io.File;
 import java.util.Collection;
@@ -39,9 +39,9 @@ public interface Products extends Iterable<AnyProduct> {
 
     interface ProductImages {
 
-        Page<ProductImageDesc> fetch();
+        Page<ProductImage> fetch();
 
-        ProductImageDesc upload(File imageFile);
+        ProductImage upload(File imageFile);
 
         ProductImageInstance select(UUID imageId);
 
@@ -49,7 +49,7 @@ public interface Products extends Iterable<AnyProduct> {
 
         interface ProductImageInstance {
 
-            ProductImageDesc findOne();
+            ProductImage findOne();
 
             void delete();
 

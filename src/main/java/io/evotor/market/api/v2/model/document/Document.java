@@ -26,7 +26,6 @@ public class Document implements Resource {
     private int sessionNumber;
     private String closeUserId;
     private GUID deviceId;
-    private GUID deviceImei;
     private GUID storeId;
     private String userId;
     private String version;

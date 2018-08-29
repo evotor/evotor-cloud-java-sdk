@@ -8,7 +8,7 @@ import io.evotor.market.api.v2.model.GUID;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
 import io.evotor.market.api.v2.model.product.ProductUpdateFields;
-import io.evotor.market.api.v2.model.product.image.ProductImageDesc;
+import io.evotor.market.api.v2.model.product.image.ProductImage;
 
 import java.io.File;
 import java.util.Collection;
@@ -58,12 +58,12 @@ public class ProductsImpl extends Impl implements Products {
             public ProductImages images() {
                 return new ProductImages() {
                     @Override
-                    public Page<ProductImageDesc> fetch() {
+                    public Page<ProductImage> fetch() {
                         return get(ProductImagesApi.class).fetch(store, productId);
                     }
 
                     @Override
-                    public ProductImageDesc upload(File imageFile) {
+                    public ProductImage upload(File imageFile) {
                         return get(ProductImagesApi.class).create(store, productId, imageFile);
                     }
 
@@ -71,7 +71,7 @@ public class ProductsImpl extends Impl implements Products {
                     public ProductImageInstance select(UUID imageId) {
                         return new ProductImageInstance() {
                             @Override
-                            public ProductImageDesc findOne() {
+                            public ProductImage findOne() {
                                 return get(ProductImagesApi.class).fetchOne(store, productId, imageId);
                             }
 
