@@ -17,7 +17,6 @@ import java.util.UUID;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
-        defaultImpl = ProductGroup.class,
         property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = ServiceProduct.class, name = "SERVICE"),

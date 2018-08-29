@@ -1,8 +1,8 @@
 package io.evotor.market.api.v2.builder;
 
+import io.evotor.market.api.v2.model.BulkTask;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
-import io.evotor.market.api.v2.model.product.ProductBulkTask;
 import io.evotor.market.api.v2.model.product.ProductUpdateFields;
 import io.evotor.market.api.v2.model.product.image.ProductImageDesc;
 
@@ -15,11 +15,11 @@ public interface Products extends Iterable<AnyProduct> {
 
     Page<AnyProduct> fetch();
 
-    ProductInstance select(String productId);
+    ProductInstance select(UUID productId);
 
-    void delete(Collection<String> products);
+    void delete(Collection<UUID> products);
 
-    CompletableFuture<ProductBulkTask> create(Collection<AnyProduct> products);
+    CompletableFuture<BulkTask<AnyProduct>> create(Collection<AnyProduct> products);
 
     AnyProduct create(AnyProduct product);
 

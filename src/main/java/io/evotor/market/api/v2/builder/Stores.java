@@ -21,5 +21,7 @@ public interface Stores {
 
         Products products();
 
+        ProductGroups productGroups();
+
     }
 }

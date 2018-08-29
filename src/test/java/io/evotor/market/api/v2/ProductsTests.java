@@ -1,17 +1,19 @@
 package io.evotor.market.api.v2;
 
-import io.evotor.market.api.exception.ResourceNotFoundException;
+import io.evotor.market.api.v2.model.BulkTask;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
-import io.evotor.market.api.v2.model.product.ProductGroup;
+import io.evotor.market.api.v2.model.product.PhysicalProduct;
+import io.evotor.market.api.v2.model.product.TaxType;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.Optional;
 
-import static io.evotor.market.api.v2.ApiHolder.*;
+import static io.evotor.market.api.v2.ApiHolder.STORE;
+import static io.evotor.market.api.v2.ApiHolder.api;
 import static org.junit.Assert.*;
 
 public class ProductsTests {
@@ -28,7 +30,7 @@ public class ProductsTests {
     }
 
     @Test
-    public void list_products_with_groups() {
+    public void list_products_from_second_store() {
         Page<AnyProduct> page = api.stores()
                 .select("store_2")
                 .products()
@@ -37,24 +39,29 @@ public class ProductsTests {
         assertNotNull(page);
         assertNotNull(page.getItems());
         assertNull(page.getPaging().getNextCursor());
-        assertThat(page.getItems(), Matchers.hasSize(4));
-
-        Optional<AnyProduct> productGroupOpt = page.getItems().stream()
-                .filter(p -> p instanceof ProductGroup)
-                .findFirst();
-
-        assertTrue(productGroupOpt.isPresent());
-        AnyProduct product = productGroupOpt.get();
-        assertEquals(DEFAULT, product.getId());
-        assertEquals("ГРУППА", product.getName());
-        assertNull(product.getParentId());
+        assertThat(page.getItems(), Matchers.hasSize(3));
     }
 
-    @Test(expected = ResourceNotFoundException.class)
-    public void post_products() {
-        ApiHolder.api.stores()
-                .select(STORE)
+    @Test
+    public void post_products_bulk() throws Exception {
+        AnyProduct actualProduct = PhysicalProduct.builder()
+                .withQuantity(new BigDecimal("42"))
+                .withCostPrice(new BigDecimal("12"))
+                .withPrice(new BigDecimal("10"))
+                .withMeasureName("liter")
+                .withTax(TaxType.VAT_18)
+                .withName("name")
+                .build();
+
+        BulkTask<AnyProduct> task = ApiHolder.api.stores()
+                .select("store_2")
                 .products()
-                .create(new ArrayList<>());
+                .create(Collections.singletonList(actualProduct))
+                .get();
+
+        assertThat(task.getDetails(), Matchers.hasSize(1));
+
+        AnyProduct expectedProduct = task.getDetails().iterator().next();
+        assertEquals(expectedProduct, actualProduct);
     }
 }

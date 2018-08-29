@@ -1,0 +1,11 @@
+[
+  {
+    "name": "name",
+    "price": 10,
+    "measure_name": "liter",
+    "tax": "VAT_18",
+    "cost_price": 12,
+    "quantity": 42,
+    "type": "NORMAL"
+  }
+]

@@ -41,6 +41,11 @@ class StoresImpl extends Impl implements Stores {
             public Products products() {
                 return new ProductsImpl(StoresImpl.this::get, store);
             }
+
+            @Override
+            public ProductGroups productGroups() {
+                return new ProductGroupsImpl(StoresImpl.this::get, store);
+            }
         };
     }
 

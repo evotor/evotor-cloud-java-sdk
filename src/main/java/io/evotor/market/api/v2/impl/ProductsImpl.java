@@ -3,9 +3,9 @@ package io.evotor.market.api.v2.impl;
 import io.evotor.market.api.v2.ProductImagesApi;
 import io.evotor.market.api.v2.ProductsApi;
 import io.evotor.market.api.v2.builder.Products;
+import io.evotor.market.api.v2.model.BulkTask;
 import io.evotor.market.api.v2.model.Page;
 import io.evotor.market.api.v2.model.product.AnyProduct;
-import io.evotor.market.api.v2.model.product.ProductBulkTask;
 import io.evotor.market.api.v2.model.product.ProductUpdateFields;
 import io.evotor.market.api.v2.model.product.image.ProductImageDesc;
 
@@ -31,7 +31,7 @@ public class ProductsImpl extends Impl implements Products {
     }
 
     @Override
-    public ProductInstance select(String productId) {
+    public ProductInstance select(UUID productId) {
         return new ProductInstance() {
             @Override
             public AnyProduct fetch() {
@@ -91,15 +91,15 @@ public class ProductsImpl extends Impl implements Products {
     }
 
     @Override
-    public void delete(Collection<String> products) {
+    public void delete(Collection<UUID> products) {
         get(ProductsApi.class).delete(store, products);
     }
 
     @Override
-    public CompletableFuture<ProductBulkTask> create(Collection<AnyProduct> products) {
-        ProductBulkTask task = get(ProductsApi.class).createBulk(store, products);
+    public CompletableFuture<BulkTask<AnyProduct>> create(Collection<AnyProduct> products) {
+        BulkTask<AnyProduct> task = get(ProductsApi.class).createBulk(store, products);
         return CompletableFuture.supplyAsync(
-                () -> ProductsImpl.this.get(ProductsApi.class).bulkStatus(store, task.getId())
+                () -> ProductsImpl.this.get(ProductsApi.class).bulkStatus(task.getId())
         );
     }
 

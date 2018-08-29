@@ -15,20 +15,20 @@ public interface ProductImagesApi {
     @RequestLine("GET /stores/{store_id}/products/{product_id}/images")
     Page<ProductImageDesc> fetch(
             @Param("store_id") String storeId,
-            @Param("product_id") String productId);
+            @Param("product_id") UUID productId);
 
     @Scope("product.image:read")
     @RequestLine("GET /stores/{store_id}/products/{product_id}/images/{image_id}")
     ProductImageDesc fetchOne(
             @Param("store_id") String storeId,
-            @Param("product_id") String productId,
+            @Param("product_id") UUID productId,
             @Param("image_id") UUID imageId);
 
     @Scope("product.image:write")
     @RequestLine("DELETE /stores/{store_id}/products/{product_id}/images/{image_id}")
     void deleteOne(
             @Param("store_id") String storeId,
-            @Param("product_id") String productId,
+            @Param("product_id") UUID productId,
             @Param("image_id") UUID imageId);
 
     @Scope("product.image:write")
@@ -36,13 +36,13 @@ public interface ProductImagesApi {
     @RequestLine("POST /stores/{store_id}/products/{product_id}/images")
     ProductImageDesc create(
             @Param("store_id") String storeId,
-            @Param("product_id") String productId,
+            @Param("product_id") UUID productId,
             @Param("datafile") File file);
 
     @Scope("product.image:write")
     @RequestLine("DELETE /stores/{store_id}/products/{product_id}/images")
     void delete(
             @Param("store_id") String storeId,
-            @Param("product_id") String productId);
+            @Param("product_id") UUID productId);
 
 }

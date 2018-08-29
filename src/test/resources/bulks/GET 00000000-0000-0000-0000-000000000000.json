@@ -1,0 +1,16 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "modified_at": "2018-07-09T11:46:52.024+0000",
+  "status": "COMPLETED",
+  "details": [
+    {
+      "name": "name",
+      "price": 10,
+      "measure_name": "liter",
+      "tax": "VAT_18",
+      "cost_price": 12,
+      "quantity": 42,
+      "type": "NORMAL"
+    }
+  ]
+}

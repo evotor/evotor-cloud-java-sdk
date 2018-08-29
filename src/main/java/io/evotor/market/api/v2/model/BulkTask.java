@@ -1,17 +1,17 @@
-package io.evotor.market.api.v2.model.product;
+package io.evotor.market.api.v2.model;
 
-import io.evotor.market.api.v2.model.TaskStatus;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
-@Deprecated
-public class ProductBulkTask {
+public class BulkTask<T extends AbstractResource> {
 
     private UUID id;
     private TaskStatus status;
     private Date modifiedAt;
+    private List<T> details;
 
 }
