@@ -34,7 +34,7 @@ public abstract class Product extends AnyProduct {
     private Boolean allowToSell;
 
     private String articleNumber;
-    private Collection<String> barCodes;
+    private Collection<String> barcodes;
 
     @SuppressWarnings("unchecked")
     public static class Builder<T extends Product, B extends Builder<T, ?>> extends AnyProduct.Builder<T, B> {
@@ -68,11 +68,16 @@ public abstract class Product extends AnyProduct {
             return (B) this;
         }
 
+        public B allowedToSell(Boolean allowedToSell) {
+            toBuild.setAllowToSell(allowedToSell);
+            return (B) this;
+        }
+
         public B withBarCode(String barCode) {
-            Collection<String> barCodes = toBuild.getBarCodes();
+            Collection<String> barCodes = toBuild.getBarcodes();
             if (barCodes == null) {
                 barCodes = new ArrayList<>();
-                toBuild.setBarCodes(barCodes);
+                toBuild.setBarcodes(barCodes);
             }
 
             barCodes.add(barCode);

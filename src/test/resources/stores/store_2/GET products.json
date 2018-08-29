@@ -3,7 +3,7 @@
     {
       "type": "NORMAL",
       "name": "Пицца мясная 5,4,3",
-      "bar_codes": [],
+      "barcodes": [],
       "price": 43,
       "cost_price": 0,
       "quantity": 5,
@@ -18,7 +18,7 @@
     {
       "type": "NORMAL",
       "name": "Котлета в тесте",
-      "bar_codes": [],
+      "barcodes": [],
       "price": 43,
       "cost_price": 0,
       "quantity": 2,
@@ -40,7 +40,7 @@
     {
       "type": "NORMAL",
       "name": "Беляш",
-      "bar_codes": [],
+      "barcodes": [],
       "price": 35,
       "cost_price": 0,
       "quantity": 6,
