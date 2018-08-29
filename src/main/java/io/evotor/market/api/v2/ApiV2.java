@@ -38,7 +38,7 @@ public class ApiV2 {
                     template.header("User-Agent", "X-Evotor-Api-Demo");
                     template.header("Accept", "application/vnd.evotor.v2+json");
                     if (template.body() != null && template.body().length > 0 && !template.headers().containsKey("Content-Type")) {
-                        template.header("Content-Type", "application/json");
+                        template.header("Content-Type", "application/vnd.evotor.v2+json");
                     }
                 })
                 .errorDecoder(new ExceptionResolver()), apiUrl);

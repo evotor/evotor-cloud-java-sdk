@@ -1,6 +1,5 @@
 package io.evotor.market.api.v2;
 
-import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 import io.evotor.market.api.v2.model.Page;
@@ -23,21 +22,18 @@ public interface ProductsApi {
     AnyProduct fetchOne(@Param("store_id") String storeId,
                         @Param("product_id") String productId);
 
-    @Headers("Content-Type: application/vnd.evotor.v2+json")
     @Scope(value = "product:write", optional = "product.quantity:write")
     @RequestLine("PUT /stores/{store_id}/products/{product_id}")
     AnyProduct replace(@Param("store_id") String storeId,
                        @Param("product_id") String productId,
                        AnyProduct product);
 
-    @Headers("Content-Type: application/vnd.evotor.v2+json")
     @Scope(value = "product:write", optional = "product.quantity:write")
     @RequestLine("PATCH /stores/{store_id}/products/{product_id}")
     AnyProduct update(@Param("store_id") String storeId,
                       @Param("product_id") String productId,
                       ProductUpdateFields fields);
 
-    @Headers("Content-Type: application/vnd.evotor.v2+json")
     @Scope(value = "product:write", optional = "product.quantity:write")
     @RequestLine("POST /stores/{store_id}/products")
     AnyProduct create(@Param("store_id") String storeId,
