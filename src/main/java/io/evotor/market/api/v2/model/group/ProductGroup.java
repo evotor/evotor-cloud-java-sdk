@@ -65,5 +65,9 @@ public class ProductGroup extends AbstractResource {
             attributes.add(attribute);
             return this;
         }
+
+        public ProductGroup build() {
+            return toBuild;
+        }
     }
 }
