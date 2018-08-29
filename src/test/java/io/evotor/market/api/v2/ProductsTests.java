@@ -30,7 +30,8 @@ public class ProductsTests {
                 .iterator();
 
         assertNotNull(iterator);
-        assertFalse(iterator.hasNext());
+        assertTrue(iterator.hasNext());
+        assertThat(iterator.next(), Matchers.instanceOf(PhysicalProduct.class));
     }
 
     @Test

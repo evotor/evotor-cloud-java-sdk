@@ -1,5 +1,6 @@
 package io.evotor.market.api.v2.model.product;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.util.LinkedHashSet;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class MarkedAlcoholProduct extends AlcoholProduct {
 

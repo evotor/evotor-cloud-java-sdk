@@ -1,11 +1,11 @@
 package io.evotor.market.api.v2.model.product;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class ServiceProduct extends Product {
 
