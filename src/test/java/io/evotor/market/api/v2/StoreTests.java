@@ -24,7 +24,6 @@ public class StoreTests {
 
         Store store = stores.iterator().next();
         assertNotNull(store.getId());
-        assertNull(store.getCode());
         assertEquals("Россия, Москва", store.getAddress());
         assertEquals("msk", store.getName());
     }
@@ -36,7 +35,6 @@ public class StoreTests {
                 .fetch();
 
         assertNotNull(store.getId());
-        assertNull(store.getCode());
         assertEquals("Россия, Москва", store.getAddress());
         assertEquals("msk", store.getName());
     }

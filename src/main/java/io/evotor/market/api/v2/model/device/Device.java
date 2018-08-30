@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 public class Device extends AbstractResource {
 
     private GUID id;
-    private String code;
     private String name;
     private Long timezoneOffset;
     private String imei;

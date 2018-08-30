@@ -13,6 +13,5 @@ public class Store extends AbstractResource {
     private String userId;
     private String address;
     private String name;
-    private String code;
 
 }

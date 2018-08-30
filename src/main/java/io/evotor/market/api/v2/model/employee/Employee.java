@@ -15,7 +15,6 @@ public class Employee extends AbstractResource {
     private String name;
     private String lastName;
     private Long phone;
-    private String code;
     private String role;
     private Collection<GUID> stores;
     private String userId;
