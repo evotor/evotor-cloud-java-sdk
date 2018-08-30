@@ -9,10 +9,12 @@ import io.evotor.market.api.v2.model.employee.Employee;
 @Scope("employee:read")
 public interface EmployeesApi {
 
-    @RequestLine("GET /employees?store_id={store_id}")
-    Page<Employee> fetch(@Param("store_id") GUID store);
+    @RequestLine("GET /employees?store_id={store_id}&cursor={cursor}")
+    Page<Employee> fetch(
+            @Param("store_id") GUID store,
+            @Param("cursor") String cursor);
 
     @RequestLine("GET /employees/{employee_id}")
-    Employee fetchOne(@Param("employee_id") String employee);
+    Employee fetchOne(@Param("employee_id") GUID employee);
 
 }

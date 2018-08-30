@@ -19,11 +19,11 @@ class EmployeeImpl extends Impl implements Employees {
 
     @Override
     public Page<Employee> fetch() {
-        return get(EmployeesApi.class).fetch(store);
+        return get(EmployeesApi.class).fetch(store, null);
     }
 
     @Override
-    public EmployeeInstance select(String employee) {
+    public EmployeeInstance select(GUID employee) {
         return new EmployeeInstance() {
 
             @Override
